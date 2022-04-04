@@ -61,13 +61,14 @@ export default function Edit() {
    };
  
    // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:5001/update/${params.id}`, {
+   const data = await fetch(`http://localhost:5001/update/${params.id}`, {
      method: "POST",
      body: JSON.stringify(editedPerson),
      headers: {
        'Content-Type': 'application/json'
      },
    });
+   console.log(data);
  
    navigate("/");
  }
