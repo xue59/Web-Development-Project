@@ -3,9 +3,13 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
-   name: "",
-   position: "",
-   level: "",
+  item_name: "",
+  preview_img: "",
+  current_quantity: "",
+  sub_team: "",
+  region: "",
+  warehouse_location: "",
+  notes: "",
  });
  const navigate = useNavigate();
  
@@ -35,7 +39,7 @@ export default function Create() {
      return;
    });
  
-   setForm({ name: "", position: "", level: "" });
+   setForm({ item_name: "", preview_img: "", current_quantity: "", sub_team: "", region: "", warehouse_location: "", notes: "" });
    navigate("/");
  }
  
@@ -45,62 +49,74 @@ export default function Create() {
      <h3>Create New Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-         <label htmlFor="name">Name</label>
+         <label htmlFor="item_name">item_name</label>
          <input
            type="text"
            className="form-control"
-           id="name"
-           value={form.name}
-           onChange={(e) => updateForm({ name: e.target.value })}
+           id="item_name"
+           value={form.item_name}
+           onChange={(e) => updateForm({ item_name: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="position">Position</label>
+         <label htmlFor="preview_img">preview_img</label>
          <input
            type="text"
            className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
+           id="preview_img"
+           value={form.preview_img}
+           onChange={(e) => updateForm({ preview_img: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionIntern"
-             value="Intern"
-             checked={form.level === "Intern"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionIntern" className="form-check-label">Intern</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionJunior"
-             value="Junior"
-             checked={form.level === "Junior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionJunior" className="form-check-label">Junior</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionSenior"
-             value="Senior"
-             checked={form.level === "Senior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionSenior" className="form-check-label">Senior</label>
-         </div>
+         <label htmlFor="current_quantity">current_quantity</label>
+         <input
+           type="text"
+           className="form-control"
+           id="current_quantity"
+           value={form.current_quantity}
+           onChange={(e) => updateForm({ current_quantity: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="sub_team">sub_team</label>
+         <input
+           type="text"
+           className="form-control"
+           id="sub_team"
+           value={form.sub_team}
+           onChange={(e) => updateForm({ sub_team: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="region">region</label>
+         <input
+           type="text"
+           className="form-control"
+           id="region"
+           value={form.region}
+           onChange={(e) => updateForm({ region: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="warehouse_location">warehouse_location</label>
+         <input
+           type="text"
+           className="form-control"
+           id="warehouse_location"
+           value={form.warehouse_location}
+           onChange={(e) => updateForm({ warehouse_location: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="notes">notes</label>
+         <input
+           type="text"
+           className="form-control"
+           id="notes"
+           value={form.notes}
+           onChange={(e) => updateForm({ notes: e.target.value })}
+         />
        </div>
        <div className="form-group">
          <input

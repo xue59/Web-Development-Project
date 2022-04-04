@@ -14,7 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(function (req, res) {
-  let db_connect = dbo.getDb("employees");
+  let db_connect = dbo.getDb("inventories");
   db_connect
     .collection("records")
     .find({})
@@ -40,9 +40,13 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 recordRoutes.route("/record/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    name: req.body.name,
-    position: req.body.position,
-    level: req.body.level,
+    item_name: req.body.item_name,
+    preview_img: req.body.preview_img,
+    current_quantity: req.body.current_quantity,
+    sub_team: req.body.sub_team,
+    region: req.body.region,
+    warehouse_location: req.body.warehouse_location,
+    notes: req.body.notes,
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -56,9 +60,13 @@ recordRoutes.route("/update/:id").post(async (req, response) => {
   let myquery = { _id: ObjectId( req.params.id )};  
   let newvalues = {    
     $set: {      
-      name: req.body.name,     
-      position: req.body.position,      
-      level: req.body.level,    
+      item_name: req.body.item_name,
+      preview_img: req.body.preview_img,
+      current_quantity: req.body.current_quantity,
+      sub_team: req.body.sub_team,
+      region: req.body.region,
+      warehouse_location: req.body.warehouse_location,
+      notes: req.body.notes,    
     }, 
   }
   try{
