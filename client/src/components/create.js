@@ -139,7 +139,7 @@ export default function Create() {
          </div>
 
          <div className="form-group">
-         <label htmlFor="warehouseLocation">warehouseLocation:</label>
+         <label htmlFor="warehouseLocation">warehouseLocation: </label>
          <input
            type="text"
            className="form-control"
