@@ -98,7 +98,7 @@ export default function Create() {
            onChange={(e) => updateForm({ subTeams: e.target.value })}
          />
        </div>
-
+      
        <div className="form-group">
          <p>Region: </p>
          <div className="form-check form-check-inline">
@@ -108,7 +108,7 @@ export default function Create() {
              name="regionEast"
              id="region-East"
              value="East"
-             checked={form.level === "East"}
+             checked={form.region === "East"}
              onChange={(e) => updateForm({ region: e.target.value })}
            />
            <label htmlFor="regionEast" className="form-check-label">East</label>
@@ -120,7 +120,7 @@ export default function Create() {
              name="regionMiddle"
              id="region-Middle"
              value="Middle"
-             checked={form.level === "Middle"}
+             checked={form.region === "Middle"}
              onChange={(e) => updateForm({ region: e.target.value })}
            />
            <label htmlFor="regionMiddle" className="form-check-label">Middle</label>
@@ -132,7 +132,7 @@ export default function Create() {
              name="regionWest"
              id="region-West"
              value="West"
-             checked={form.level === "West"}
+             checked={form.region === "West"}
              onChange={(e) => updateForm({ region: e.target.value })}
            />
            <label htmlFor="regionWest" className="form-check-label">West</label>
