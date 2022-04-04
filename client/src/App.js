@@ -1,4 +1,5 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";//import bootstrap for display -zack
 
 // We use Route in order to define the different routes of our application
 import { Route, Routes, Link } from "react-router-dom";
@@ -13,6 +14,7 @@ import LogoutButton from "./components/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./components/Profile";
 import ProtectedRouter from "./components/ProtectedRouter";
+import SideBarMenu from "./components/SideBarMenu";
 
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -23,18 +25,25 @@ const App = () => {
         <p>Loading</p>
       ) : (
         <div>
-          <Navbar />
-          <Link to="/profile">Profile</Link>
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-          <Routes>
-            <Route
-              path="/profile"
-              element={<ProtectedRouter protectedComponent={Profile} />}
-            />
-            <Route exact path="/" element={<RecordList />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="/create" element={<Create />} />
-          </Routes>
+          <Navbar isAuthenticated={isAuthenticated}/>
+          {/* <Link to="/profile">Profile</Link>
+          {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
+          <div className="container-fluid">
+            <div className="row">
+              <SideBarMenu />
+              <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <Routes>
+                  <Route
+                    path="/profile"
+                    element={<ProtectedRouter protectedComponent={Profile} />}
+                  />
+                  <Route exact path="/" element={<RecordList />} />
+                  <Route path="/edit/:id" element={<Edit />} />
+                  <Route path="/create" element={<Create />} />
+                </Routes>
+              </main>
+            </div>
+          </div>
         </div>
       )}
     </>
@@ -42,3 +51,13 @@ const App = () => {
 };
 
 export default App;
+
+          // <Routes>
+          //   <Route
+          //     path="/profile"
+          //     element={<ProtectedRouter protectedComponent={Profile} />}
+          //   />
+          //   <Route exact path="/" element={<RecordList />} />
+          //   <Route path="/edit/:id" element={<Edit />} />
+          //   <Route path="/create" element={<Create />} />
+          // </Routes>
