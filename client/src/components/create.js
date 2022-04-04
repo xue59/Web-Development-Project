@@ -3,13 +3,13 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
-  item_name: "",
-  preview_img: "",
-  current_quantity: "",
-  sub_team: "",
+  itemName: "",
+  img: "",
+  currentQuantity: 0,
+  subTeams: "",
   region: "",
-  warehouse_location: "",
-  notes: "",
+  warehouseLocation:"",
+  notes: ""
  });
  const navigate = useNavigate();
  
@@ -25,91 +25,133 @@ export default function Create() {
    e.preventDefault();
  
    // When a post request is sent to the create url, we'll add a new record to the database.
-   const newPerson = { ...form };
+   const newItem = { ...form };
  
    await fetch("http://localhost:5001/record/add", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
      },
-     body: JSON.stringify(newPerson),
+     body: JSON.stringify(newItem),
    })
    .catch(error => {
      window.alert(error);
      return;
    });
- 
-   setForm({ item_name: "", preview_img: "", current_quantity: "", sub_team: "", region: "", warehouse_location: "", notes: "" });
+   setForm({
+    itemName: "",
+    img: "",
+    currentQuantity: 0,
+    subTeams: "",
+    region: "",
+    warehouseLocation:"",
+    notes: ""
+   });
    navigate("/");
  }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
-     <h3>Create New Record</h3>
+     <h3>Create New Record into the Inventory</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-         <label htmlFor="item_name">item_name</label>
+         <label htmlFor="itemName">itemName:</label>
          <input
            type="text"
            className="form-control"
-           id="item_name"
-           value={form.item_name}
-           onChange={(e) => updateForm({ item_name: e.target.value })}
+           id="itemName"
+           value={form.itemName}
+           onChange={(e) => updateForm({ itemName: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="preview_img">preview_img</label>
+         <label htmlFor="img">imgs:</label>
          <input
            type="text"
            className="form-control"
-           id="preview_img"
-           value={form.preview_img}
-           onChange={(e) => updateForm({ preview_img: e.target.value })}
+           id="img"
+           value={form.img}
+           onChange={(e) => updateForm({ img: e.target.value })}
          />
        </div>
+
        <div className="form-group">
-         <label htmlFor="current_quantity">current_quantity</label>
+         <label htmlFor="currentQuantity">currentQuantity:</label>
+         <input
+           type="number"
+           className="form-control"
+           id="currentQuantity"
+           value={form.currentQuantity}
+           onChange={(e) => updateForm({ currentQuantity: e.target.value })}
+         />
+       </div>
+
+       <div className="form-group">
+         <label htmlFor="subTeams">subTeams:</label>
          <input
            type="text"
            className="form-control"
-           id="current_quantity"
-           value={form.current_quantity}
-           onChange={(e) => updateForm({ current_quantity: e.target.value })}
+           id="subTeams"
+           value={form.subTeams}
+           onChange={(e) => updateForm({ subTeams: e.target.value })}
          />
        </div>
+      
        <div className="form-group">
-         <label htmlFor="sub_team">sub_team</label>
+         <p>Region: </p>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="regionEast"
+             id="region-East"
+             value="East"
+             checked={form.region === "East"}
+             onChange={(e) => updateForm({ region: e.target.value })}
+           />
+           <label htmlFor="regionEast" className="form-check-label">East</label>
+         </div>
+
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="regionMiddle"
+             id="region-Middle"
+             value="Middle"
+             checked={form.region === "Middle"}
+             onChange={(e) => updateForm({ region: e.target.value })}
+           />
+           <label htmlFor="regionMiddle" className="form-check-label">Middle</label>
+         </div>
+
+         <div className="form-check form-check-inline"> 
+           <input
+             className="form-check-input"
+             type="radio"
+             name="regionWest"
+             id="region-West"
+             value="West"
+             checked={form.region === "West"}
+             onChange={(e) => updateForm({ region: e.target.value })}
+           />
+           <label htmlFor="regionWest" className="form-check-label">West</label>
+         </div>
+
+         <div className="form-group">
+         <label htmlFor="warehouseLocation">warehouseLocation: </label>
          <input
            type="text"
            className="form-control"
-           id="sub_team"
-           value={form.sub_team}
-           onChange={(e) => updateForm({ sub_team: e.target.value })}
+           id="warehouseLocation"
+           value={form.warehouseLocation}
+           onChange={(e) => updateForm({ warehouseLocation: e.target.value })}
          />
-       </div>
-       <div className="form-group">
-         <label htmlFor="region">region</label>
-         <input
-           type="text"
-           className="form-control"
-           id="region"
-           value={form.region}
-           onChange={(e) => updateForm({ region: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <label htmlFor="warehouse_location">warehouse_location</label>
-         <input
-           type="text"
-           className="form-control"
-           id="warehouse_location"
-           value={form.warehouse_location}
-           onChange={(e) => updateForm({ warehouse_location: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <label htmlFor="notes">notes</label>
+        </div>
+
+        <div className="form-group">
+         <label htmlFor="notes">notes:</label>
          <input
            type="text"
            className="form-control"
@@ -117,11 +159,13 @@ export default function Create() {
            value={form.notes}
            onChange={(e) => updateForm({ notes: e.target.value })}
          />
+        </div>
        </div>
+       
        <div className="form-group">
          <input
            type="submit"
-           value="Create person"
+           value="Create new item"
            className="btn btn-primary"
          />
        </div>

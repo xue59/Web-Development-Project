@@ -40,12 +40,12 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 recordRoutes.route("/record/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    item_name: req.body.item_name,
-    preview_img: req.body.preview_img,
-    current_quantity: req.body.current_quantity,
-    sub_team: req.body.sub_team,
+    itemName: req.body.itemName,
+    img: req.body.img,
+    currentQuantity: req.body.currentQuantity,
+    subTeams: req.body.subTeams,
     region: req.body.region,
-    warehouse_location: req.body.warehouse_location,
+    warehouseLocation: req.body.warehouseLocation,
     notes: req.body.notes,
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
@@ -60,13 +60,13 @@ recordRoutes.route("/update/:id").post(async (req, response) => {
   let myquery = { _id: ObjectId( req.params.id )};  
   let newvalues = {    
     $set: {      
-      item_name: req.body.item_name,
-      preview_img: req.body.preview_img,
-      current_quantity: req.body.current_quantity,
-      sub_team: req.body.sub_team,
+      itemName: req.body.itemName,
+      img: req.body.img,
+      currentQuantity: req.body.currentQuantity,
+      subTeams: req.body.subTeams,
       region: req.body.region,
-      warehouse_location: req.body.warehouse_location,
-      notes: req.body.notes,    
+      warehouseLocation: req.body.warehouseLocation,
+      notes: req.body.notes,   
     }, 
   }
   try{
