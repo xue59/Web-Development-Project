@@ -38,7 +38,6 @@ export default function Create() {
      window.alert(error);
      return;
    });
- 
    setForm({
     itemName: "",
     img: "",
@@ -113,6 +112,7 @@ export default function Create() {
            />
            <label htmlFor="regionEast" className="form-check-label">East</label>
          </div>
+
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
@@ -125,6 +125,7 @@ export default function Create() {
            />
            <label htmlFor="regionMiddle" className="form-check-label">Middle</label>
          </div>
+
          <div className="form-check form-check-inline"> 
            <input
              className="form-check-input"
@@ -148,6 +149,7 @@ export default function Create() {
            onChange={(e) => updateForm({ warehouseLocation: e.target.value })}
          />
         </div>
+
         <div className="form-group">
          <label htmlFor="notes">notes:</label>
          <input
@@ -159,7 +161,7 @@ export default function Create() {
          />
         </div>
        </div>
-
+       
        <div className="form-group">
          <input
            type="submit"
