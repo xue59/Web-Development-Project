@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
  
 const Record = (props) => (
  <tr>
-   <td>{props.record.name}</td>
-   <td>{props.record.position}</td>
-   <td>{props.record.level}</td>
-   <td>
+   <td>{props.record.itemName}</td>
+   <td>{props.record.img}</td>
+   <td>{props.record.currentQuantity}</td>
+   <td>{props.record.subTeams}</td>
+   <td>{props.record.region}</td>
+   <td>{props.record.warehouseLocation}</td>
+   <td>{props.record.notes}</td>
+   
+   {/* <td>
      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
@@ -15,7 +20,7 @@ const Record = (props) => (
      >
        Delete
      </button>
-   </td>
+   </td> */}  
  </tr>
 );
  
@@ -68,14 +73,17 @@ export default function RecordList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Record List</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
+     <h3>Invnetory Record List</h3>
+     <table className="table table-striped" style={{ marginTop: 20, border : 1, width: "100%"}}>
        <thead>
-         <tr>
-           <th>Name</th>
-           <th>Position</th>
-           <th>Level</th>
-           <th>Action</th>
+         <tr className="inventory-table-head">
+           <th>Item Name:</th>
+           <th>Img:</th>
+           <th>Current Quantity:</th>
+           <th>Sub-teams:</th>
+           <th>Region:</th>
+           <th>Warehouse location:</th>
+           <th>Notes: </th>
          </tr>
        </thead>
        <tbody>{recordList()}</tbody>
