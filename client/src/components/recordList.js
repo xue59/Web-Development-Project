@@ -19,6 +19,7 @@ const Record = (props) => (
      >
        Delete
      </button>
+     <Link className="btn btn-link" to={`/record/${props.record._id}`}>View</Link> |
    </td>
   </tr>
 );
