@@ -18,6 +18,7 @@ export default function Navbar(isAuthenticated) {
     <div>
       <header className="navbar navbar-light bg-light sticky-top bg-light flex-md-nowrap p-0 shadow">
       <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">A shipment portal</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"></input>
       <div className="temp-creat-record">
       </div>
       <div className="navbar-nav">
