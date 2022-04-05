@@ -15,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "./components/Profile";
 import ProtectedRouter from "./components/ProtectedRouter";
 import SideBarMenu from "./components/SideBarMenu";
+import Details from "./components/Details";
 
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -39,6 +40,7 @@ const App = () => {
                   />
                   <Route exact path="/" element={<RecordList />} />
                   <Route path="/edit/:id" element={<Edit />} />
+                  <Route path="/record/:id" element={<Details />} />
                   <Route path="/create" element={<Create />} />
                 </Routes>
               </main>
