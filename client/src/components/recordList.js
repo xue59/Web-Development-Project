@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Record = (props) => (
   <tr>
@@ -30,7 +31,7 @@ export default function RecordList() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://localhost:5001/record/`);
+      const response = await fetch(`${SERVER_URL}/record/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -49,7 +50,7 @@ export default function RecordList() {
 
   // This method will delete a record
   async function deleteRecord(id) {
-    await fetch(`http://localhost:5001/${id}`, {
+    await fetch(`${SERVER_URL}/${id}`, {
       method: "DELETE",
     });
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export default function Details() {
   const params = useParams();
@@ -9,7 +10,7 @@ export default function Details() {
 
   useEffect(() => {
     async function findInventory() {
-      const data = await fetch(`http://localhost:5001/record/${params.id}`);
+      const data = await fetch(`${SERVER_URL}/record/${params.id}`);
       const jsonData = await data.json();
       console.log(jsonData);
       setInventory(jsonData);
