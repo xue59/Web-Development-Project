@@ -5,12 +5,12 @@ const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 export default function Search() {
  const [form, setForm] = useState({
   itemName: "",
-  img: "",
-  currentQuantity: 0,
-  subTeams: "",
-  region: "",
-  warehouseLocation:"",
-  notes: ""
+  // img: "",
+  // currentQuantity: 0,
+  // subTeams: "",
+  // region: "",
+  // warehouseLocation:"",
+  // notes: ""
  });
  const navigate = useNavigate();
  
@@ -26,32 +26,18 @@ export default function Search() {
 
     // TODO: add search logic below
 
-//    e.preventDefault();
- 
-//    // When a post request is sent to the create url, we'll add a new record to the database.
-//    const newItem = { ...form };
- 
-//    await fetch(`${SERVER_URL}/record/add`, {
-//      method: "POST",
-//      headers: {
-//        "Content-Type": "application/json",
-//      },
-//      body: JSON.stringify(newItem),
-//    })
-//    .catch(error => {
-//      window.alert(error);
-//      return;
-//    });
-//    setForm({
-//     itemName: "",
-//     img: "",
-//     currentQuantity: 0,
-//     subTeams: "",
-//     region: "",
-//     warehouseLocation:"",
-//     notes: ""
-//    });
-//    navigate("/");
+  // const params = useParams();
+
+  // useEffect(() => {
+  //   async function findInventory() {
+  //     const data = await fetch(`${SERVER_URL}/search/${params.itemName}`);
+  //     const jsonData = await data.json();
+  //     console.log(jsonData);
+  //     setInventory(jsonData);
+  //     console.log(inventory);
+  //   }
+  //   findInventory();
+  // }, [params.id]);
  }
  
  // This following section will display the form that takes the input from the user.
@@ -69,7 +55,7 @@ export default function Search() {
            onChange={(e) => updateForm({ itemName: e.target.value })}
          />
        </div>
-
+{/* 
        <div className="form-group">
          <label htmlFor="subTeams">subTeams:</label>
          <input
@@ -79,9 +65,9 @@ export default function Search() {
            value={form.subTeams}
            onChange={(e) => updateForm({ subTeams: e.target.value })}
          />
-       </div>
+       </div> */}
       
-       <div className="form-group">
+       {/* <div className="form-group">
          <p>Region: </p>
          <div className="form-check form-check-inline">
            <input
@@ -131,8 +117,8 @@ export default function Search() {
            value={form.warehouseLocation}
            onChange={(e) => updateForm({ warehouseLocation: e.target.value })}
          />
-        </div>
-       </div>
+        </div> */}
+       {/* </div> */}
 
        <div className="form-group">
          <input
