@@ -13,7 +13,9 @@ import LogoutButton from "./LogoutButton";
 
  
 // Here, we display our Navbar
-export default function Navbar(isAuthenticated) {
+export default function Navbar() {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div>
       <header className="navbar navbar-light bg-light sticky-top bg-light flex-md-nowrap p-0 shadow">
