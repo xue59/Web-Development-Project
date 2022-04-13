@@ -25,7 +25,7 @@ export default function Navbar() {
       </div>
       <div className="navbar-nav">
         <div className="nav-item">
-          <Link to="/profile">Profile</Link>
+            {isAuthenticated ? <Link to="/profile">My Profile</Link> : <></>}
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
       </div>
