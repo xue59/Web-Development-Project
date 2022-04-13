@@ -28,9 +28,7 @@ const App = () => {
         <p>Loading</p>
       ) : (
         <div>
-          <Navbar isAuthenticated={isAuthenticated}/>
-          {/* <Link to="/profile">Profile</Link>
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
+          <Navbar/>
           <div className="container-fluid">
             <div className="row">
               <SideBarMenu />
