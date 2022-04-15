@@ -127,30 +127,17 @@ export default function RequestAShipment() {
         {/* 第四行输入框 */}
         <div class="row">
             <div class="col-sm">
-              <label htmlFor="address1">Address 1:</label>
+              <label htmlFor="ststreetreet">Street Address:</label>
               <input
                 type="text"
                 className="form-control"
-                id="address1"
-                value={form.address1}
-                onChange={(e) => updateForm({ address1: e.target.value })}
+                id="street"
+                value={form.street}
+                onChange={(e) => updateForm({ street: e.target.value })}
               />
             </div>
             <div class="col-sm">
-              <label htmlFor="address2">Address 2: (Apt/Room/Suit No.)</label>
-              <input
-                type="text"
-                className="form-control"
-                id="address2"
-                value={form.address2}
-                onChange={(e) => updateForm({ address2: e.target.value })}
-              />
-            </div>
-          </div>
-        {/* 第五行输入框 */}
-        <div class="row">
-            <div class="col-sm">
-              <label htmlFor="city">City:</label>
+              <label htmlFor="city">City</label>
               <input
                 type="text"
                 className="form-control"
@@ -159,24 +146,37 @@ export default function RequestAShipment() {
                 onChange={(e) => updateForm({ city: e.target.value })}
               />
             </div>
+          </div>
+        {/* 第五行输入框 */}
+        <div class="row">
             <div class="col-sm">
-              <label htmlFor="state">State/Province: </label>
+              <label htmlFor="province">Province:</label>
               <input
                 type="text"
                 className="form-control"
-                id="state"
-                value={form.state}
-                onChange={(e) => updateForm({ state: e.target.value })}
+                id="province"
+                value={form.province}
+                onChange={(e) => updateForm({ province: e.target.value })}
               />
             </div>
             <div class="col-sm">
-              <label htmlFor="zip">Zip/Postal Code: </label>
+              <label htmlFor="country">Conutry: </label>
               <input
                 type="text"
                 className="form-control"
-                id="zip"
-                value={form.zip}
-                onChange={(e) => updateForm({ zip: e.target.value })}
+                id="country"
+                value={form.country}
+                onChange={(e) => updateForm({ stcountryate: e.target.value })}
+              />
+            </div>
+            <div class="col-sm">
+              <label htmlFor="postcode">Postcode: </label>
+              <input
+                type="text"
+                className="form-control"
+                id="postcode"
+                value={form.postcode}
+                onChange={(e) => updateForm({ postcode: e.target.value })}
               />
             </div>
           </div>

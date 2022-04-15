@@ -26,9 +26,6 @@ const App = () => {
 
   return (
     <>
-      {isLoading ? (
-        <p>Loading</p>
-      ) : (
         <div>
           <Navbar/>
           <div className="container-fluid">
@@ -48,13 +45,11 @@ const App = () => {
                   <Route path="/search/:itemName" element={<SearchRecordList />} />
                   <Route path="/requestAShipment" element={<RequestAShipment />} />
                   <Route path="/approveShipment" element={<ApproveShipment />}/>
-
                 </Routes>
               </main>
             </div>
           </div>
         </div>
-      )}
     </>
   );
 };
