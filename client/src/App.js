@@ -18,6 +18,8 @@ import ProtectedRouter from "./components/ProtectedRouter";
 import SideBarMenu from "./components/SideBarMenu";
 import Details from "./components/Details";
 import SearchRecordList from "./components/SearchRecordList";
+import RequestAShipment from "./components/RequestAShipment";
+import ApproveShipment from "./components/ApproveShipment";
 
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -44,6 +46,9 @@ const App = () => {
                   <Route path="/create" element={<Create />} />
                   <Route path="/search" element={<Search />} />
                   <Route path="/search/:itemName" element={<SearchRecordList />} />
+                  <Route path="/requestAShipment" element={<RequestAShipment />} />
+                  <Route path="/approveShipment" element={<ApproveShipment />}/>
+
                 </Routes>
               </main>
             </div>
@@ -55,13 +60,3 @@ const App = () => {
 };
 
 export default App;
-
-          // <Routes>
-          //   <Route
-          //     path="/profile"
-          //     element={<ProtectedRouter protectedComponent={Profile} />}
-          //   />
-          //   <Route exact path="/" element={<RecordList />} />
-          //   <Route path="/edit/:id" element={<Edit />} />
-          //   <Route path="/create" element={<Create />} />
-          // </Routes>
