@@ -41,7 +41,7 @@ const App = () => {
                     element={<ProtectedRouter protectedComponent={Profile} />}
                   />
                   <Route exact path="/" element={<RecordList />} />
-                  <Route path="/edit/:id\" element={<Edit />} />
+                  <Route path="/edit/:id" element={<Edit />} />
                   <Route path="/record/:id" element={<Details />} />
                   <Route path="/create" element={<Create />} />
                   <Route path="/search" element={<Search />} />
