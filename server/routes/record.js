@@ -24,6 +24,18 @@ recordRoutes.route("/record").get(function (req, res) {
 });
 
 // This section will help you get a list of all the records.
+recordRoutes.route("/shipmentRequest").get(function (req, res) {
+  let db_connect = dbo.getDb("inventories");
+  db_connect
+    .collection("shippings")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
+// This section will help you get a list of all the records.
 recordRoutes.route("/search/:itemName").get(function (req, res) {
   let db_connect = dbo.getDb("inventories");
   db_connect
@@ -45,6 +57,16 @@ recordRoutes.route("/record/:id").get(function (req, res) {
   });
 });
 
+// This section will help you get a single record by id
+recordRoutes.route("/shipmentRequest/:id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection("shippings").findOne(myquery, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 // This section will help you create a new record.
 recordRoutes.route("/record/add").post(function (req, response) {
   let db_connect = dbo.getDb();
@@ -58,6 +80,28 @@ recordRoutes.route("/record/add").post(function (req, response) {
     notes: req.body.notes,
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
+// add shipping
+recordRoutes.route("/shipmentRequest/add").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myobj = {
+    receiverName: req.body.receiverName,
+    phoneNumber: req.body.phoneNumber,
+    email: req.body.email,
+    subTeams: req.body.subTeams,
+    region: req.body.region,
+    expDeliverDate: req.body.expDeliverDate,
+    street: req.body.street,
+    address2: req.body.address2,
+    province: req.body.province,
+    city: req.body.city,
+    postcode: req.body.postcode,
+  };
+  db_connect.collection("shippings").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
@@ -95,6 +139,17 @@ recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection("records").deleteOne(myquery, function (err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    response.json(obj);
+  });
+});
+
+// This section will help you delete a record
+recordRoutes.route("/shipmentRequest/delete/:id").delete((req, response) => {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId(req.params.id) };
+  db_connect.collection("shippings").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.json(obj);

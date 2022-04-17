@@ -1,111 +1,104 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react';
 import { useNavigate } from "react-router";
 import RequestPageItemsManifest from './RequestPageItemsManifest';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-export default function RequestAShipment() {
-  const [form, setForm] = useState({
-    itemName: "",
-    img: "",
-    currentQuantity: 0,
-    subTeams: "",
-    region: "",
-    warehouseLocation:"",
-    notes: ""
-   });
-   const navigate = useNavigate();
-  
-   function updateForm(value) {
-    return setForm((prev) => {
-      return { ...prev, ...value };
-    });
+class RequestAShipment extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      receiverName:'',
+      phoneNumber : '',
+      email: '',
+      subTeams :'',
+      region :'',
+      expDeliverDate :'',
+
+      street : '',
+      address2 : '',
+      province : '',
+      city : '',
+      postcode : ''
+    }
   }
 
-  async function onSubmit(e) {
-    e.preventDefault();
-  
-    // When a post request is sent to the create url, we'll add a new record to the database.
-    const newItem = { ...form };
+async updateState(event){
+  event.preventDefault();
+  try {
+    await this.setState({
+      receiverName :this.refs.receiverName.value,
+      phoneNumber :this.refs.phoneNumber.value,
+      email : this.refs.email.value,
+      subTeams :this.refs.subTeams.value,
+      region :this.refs.region.value,
+      expDeliverDate:this.refs.expDeliverDate.value,
+
+      street : this.refs.street.value,
+      address2 : this.refs.address2.value,
+      province : this.refs.province.value,
+      city : this.refs.city.value,
+      postcode : this.refs.postcode.value
+    });
+    // 需要修改 fetch URL 给后端传参数
     await fetch(`${SERVER_URL}/shipmentRequest/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newItem),
+      body: JSON.stringify(this.state),
     })
-    .catch(error => {
-      window.alert(error);
-      return;
-    });
-    setForm({
-     itemName: "",
-     img: "",
-     currentQuantity: 0,
-     subTeams: "",
-     region: "",
-     warehouseLocation:"",
-     notes: ""
-    });
     //navigate("/");
+    this.props.useNavigate("/approveShipment");
+  } catch(err){
+    console.log(err)
   }
+}
+
+  // componentDidUpdate() {
+  //   if(this.state.street !== '') {
+  //     this.refs.Modal.show();
+  //   }
+  // }
 
 
-  return (
-  <>
-    <h3>Start a new shipment request</h3>
-      <form onSubmit={onSubmit}>
-        <div className="containter"> 
-        {/* 第一行输入框 */}
+  render() {
+    return (
+      <>
+        <h3>Start a new shipment request</h3>
+        <div>
+        <form onSubmit={(e) => this.updateState(e)}>
+        <div className="containter">
+          {/* 第1行 */}
           <div class="row">
             <div class="col-sm">
               <label htmlFor="receiverName">receiverName:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="receiverName"
-                value={form.receiverName}
-                onChange={(e) => updateForm({ receiverName: e.target.value })}
-              />
+              <input type="text" className="form-control"id="receiverName" ref="receiverName"/>
             </div>
             <div class="col-sm">
               <label htmlFor="phoneNumber">phoneNumber:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="phoneNumber"
-                value={form.phoneNumber}
-                onChange={(e) => updateForm({ phoneNumber: e.target.value })}
-              />
+              <input type="text" className="form-control"id="phoneNumber" ref="phoneNumber"/>
             </div>
           </div>
-        {/* 第二行输入框 */}
-        <div class="row">
+
+          {/* 第2行 */}
+          <div class="row">
             <div class="col-sm">
               <label htmlFor="email">email:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="email"
-                value={form.email}
-                onChange={(e) => updateForm({ email: e.target.value })}
-              />
+              <input type="text" className="form-control"id="email" ref="email"/>
             </div>
             <div class="col-sm">
               <label htmlFor="subTeams">subTeams:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="subTeams"
-                value={form.subTeams}
-                onChange={(e) => updateForm({ subTeams: e.target.value })}
-              />
+              <input type="text" className="form-control"id="subTeams" ref="subTeams"/>
             </div>
           </div>
-        {/* 第三行输入框 */}
-        <div class="row">
+
+          {/* 第3行 */}
+          <div class="row">
             <div class="col-sm">
              <label htmlFor="region">region:</label>
-             <select class="form-select" onChange={(e) => updateForm({ region: e.target.value })}>
+             <select class="form-select" id="region" ref="region">
                 <option selected>Select your region</option>
                 <option value="west">West</option>
                 <option value="middle">Middle</option>
@@ -114,91 +107,53 @@ export default function RequestAShipment() {
             </div>
             <div class="col-sm">
               <label htmlFor="expDeliverDate">Expected Deliver Date:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="expDeliverDate"
-                value={form.expDeliverDate}
-                onChange={(e) => updateForm({ expDeliverDate: e.target.value })}
-              />
-            </div>
-          </div>
-        <div class="row"><br></br></div>
-        {/* 第四行输入框 */}
-        <div class="row">
-            <div class="col-sm">
-              <label htmlFor="address1">Address 1:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="address1"
-                value={form.address1}
-                onChange={(e) => updateForm({ address1: e.target.value })}
-              />
-            </div>
-            <div class="col-sm">
-              <label htmlFor="address2">Address 2: (Apt/Room/Suit No.)</label>
-              <input
-                type="text"
-                className="form-control"
-                id="address2"
-                value={form.address2}
-                onChange={(e) => updateForm({ address2: e.target.value })}
-              />
-            </div>
-          </div>
-        {/* 第五行输入框 */}
-        <div class="row">
-            <div class="col-sm">
-              <label htmlFor="city">City:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="city"
-                value={form.city}
-                onChange={(e) => updateForm({ city: e.target.value })}
-              />
-            </div>
-            <div class="col-sm">
-              <label htmlFor="state">State/Province: </label>
-              <input
-                type="text"
-                className="form-control"
-                id="state"
-                value={form.state}
-                onChange={(e) => updateForm({ state: e.target.value })}
-              />
-            </div>
-            <div class="col-sm">
-              <label htmlFor="zip">Zip/Postal Code: </label>
-              <input
-                type="text"
-                className="form-control"
-                id="zip"
-                value={form.zip}
-                onChange={(e) => updateForm({ zip: e.target.value })}
-              />
+              <input type="text" className="form-control" id="expDeliverDate" ref="expDeliverDate"/>
             </div>
           </div>
           <div class="row"><br></br></div>
+          {/* Address */}
+          <div class="row">
+            <div class="col-sm">
+              <label htmlFor="street">Street Address1:</label>
+              <input className="form-control" id="street" type="text" placeholder="Street address" ref="street" />
+            </div>
+            <div class="col-sm">
+              <label htmlFor="address2">Address2(Room/APT/Suit):</label>
+              <input className="form-control" id="address2" type="text" placeholder="Address2(Room/APT/Suit)"  ref="address2" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <label htmlFor="province">Province:</label>
+              <input className="form-control" id="province" type="text" placeholder="State/Province" ref="province" />
+            </div>
+            <div class="col-sm">
+              <label htmlFor="city">City:</label>
+              <input className="form-control" id="city" type="text" placeholder="city" ref="city" />
+            </div>
+            <div class="col-sm">
+              <label htmlFor="postcode">Postcode:</label>
+              <input className="form-control"  id="postcode" type="text" placeholder="Zip/Postcode" ref="postcode" />
+            </div>
+          </div>
+          
+          <div class="row"><br></br></div>{/* Bank line */}
           <div class="row"><p><u>Items manifest:</u></p></div>
-        {/* 第五行输入框 */}
-        <RequestPageItemsManifest />
+          {/* 第五行输入框 */}
+          <RequestPageItemsManifest />
+        
+        </div> {/* Container End */} 
 
-
-        {/* 第六行Submit 按钮 */}
+        {/* Submit 按钮 */}
         <div class="row"><br></br></div>
         <div class="row"><br></br></div>
-        </div> 
-        <div className="form-group">
-         <input
-           type="submit"
-           value="Submit shipment request"
-           className="btn btn-primary"
-         />
-       </div>      
-       </form>
+        <input className="btn btn-primary" type='submit' value='Submit shipment request' />
+      </form>
+      </div>
+      </>
 
-    
-  </>
-)}
+    );
+  }
+}
+
+export default RequestAShipment;

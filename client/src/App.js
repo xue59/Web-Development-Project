@@ -20,15 +20,15 @@ import Details from "./components/Details";
 import SearchRecordList from "./components/SearchRecordList";
 import RequestAShipment from "./components/RequestAShipment";
 import ApproveShipment from "./components/ApproveShipment";
+import ShipmentDetails from "./components/ShipmentDetails";
 
 const App = () => {
   const { isLoading } = useAuth0();
-
   return (
     <>
-      {isLoading ? (
+      {/* {isLoading ? (
         <p>Loading</p>
-      ) : (
+      ) : ( */}
         <div>
           <Navbar />
           <div className="container-fluid">
@@ -63,12 +63,16 @@ const App = () => {
                     path="/approveShipment"
                     element={<ProtectedRouter protectedComponent={ApproveShipment} />}
                   />
+                  <Route
+                    path="/shipmentDetails/:id"
+                    element={<ShipmentDetails/>}
+                  />
                 </Routes>
               </main>
             </div>
           </div>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };
