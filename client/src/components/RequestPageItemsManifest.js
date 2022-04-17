@@ -9,7 +9,6 @@ export default function RequestPageItemsManifest() {
     currentQuantiry: 0,
     requestAmount: 0
   })
-
   const createRow = () => {
     setNewItemList([...newItemList,{...newItem}]);
     setNewItem({
@@ -17,7 +16,7 @@ export default function RequestPageItemsManifest() {
         currentQuantiry: 0,
         requestAmount: 0
     });
-    setDisplayForm(false);
+    setDisplayForm(false)
   };
 
   const handleOnChange = e => {
@@ -27,31 +26,15 @@ export default function RequestPageItemsManifest() {
     });
   };
 
-//   function addARow(){
-//     //   console.log("add a row clicked!")
-//     setNewItemList([...newItemList, 
-//         {
-//             newItemName: "",
-//             currentQuantiry: 0,
-//             requestAmount: 0 
-//         }
-//       ])
-//       return 
-//   }
-
 function removeLastRow(){
-    // console.log("remove last roll clicked!")
     newItemList.pop()
     setNewItemList([...newItemList])
     return
 }
 
-// function itemNameChanged(index){
-//     console.log(index,"input changed")
-// }
 
   return (
-    <>
+    <div>
      <table className="table table-striped" style={{ marginTop: 5, border: 1, width: "100%" }}>
         <thead>
             <tr>
@@ -121,6 +104,6 @@ function removeLastRow(){
           Add an item
         </button>
       )} 
-    </>
+    </div>
   )
 }
