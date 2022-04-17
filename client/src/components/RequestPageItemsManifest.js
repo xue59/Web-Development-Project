@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from "react";
+import { useState} from "react";
 
 export default function RequestPageItemsManifest() {
   const [newItemList,setNewItemList] = useState([])
@@ -33,7 +33,7 @@ function removeLastRow(){
 }
 
 
-  return (
+  return ([
     <div>
      <table className="table table-striped" style={{ marginTop: 5, border: 1, width: "100%" }}>
         <thead>
@@ -104,6 +104,6 @@ function removeLastRow(){
           Add an item
         </button>
       )} 
-    </div>
+    </div>,JSON.stringify(newItemList)]
   )
 }

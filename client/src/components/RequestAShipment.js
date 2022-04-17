@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect} from 'react';
 import { useNavigate } from "react-router";
 import RequestPageItemsManifest from './RequestPageItemsManifest';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-class RequestAShipment extends Component {
+export default function RequestAShipment() {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
+  const [state, setState] = useState(
+    {
       receiverName:'',
       phoneNumber : '',
       email: '',
@@ -20,69 +18,67 @@ class RequestAShipment extends Component {
       address2 : '',
       province : '',
       city : '',
-      postcode : '',
-      
+      postcode : '',   
       manifestList:[]  // 这个为记录所需物品清单table
 
     }
-  }
+  )
+const navigate = useNavigate();
 
-async updateState(event){
-  event.preventDefault();
+useEffect (()=>{ //用useEffect调用当前state 进行fetch给后端
+  if (state.receiverName!==''){
   try {
-    await this.setState({
-      receiverName :this.refs.receiverName.value,
-      phoneNumber :this.refs.phoneNumber.value,
-      email : this.refs.email.value,
-      subTeams :this.refs.subTeams.value,
-      region :this.refs.region.value,
-      expDeliverDate:this.refs.expDeliverDate.value,
-
-      street : this.refs.street.value,
-      address2 : this.refs.address2.value,
-      province : this.refs.province.value,
-      city : this.refs.city.value,
-      postcode : this.refs.postcode.value,
-      manifestList: []
-    });
-    // 需要修改 fetch URL 给后端传参数
-    await fetch(`${SERVER_URL}/shipmentRequest/add`, {
+     fetch(`${SERVER_URL}/shipmentRequest/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(state),
     })
-    //navigate("/");
-    //this.props.useNavigate("/approveShipment");
+     console.log("Fetch stated",state)
+    navigate("/approveShipment");
+  } catch(err){
+    console.log(err)
+  }}
+})
+
+async function updateState(event){
+  event.preventDefault()//避免刷新页面不能删除
+  try {
+    await setState({ //必须await
+      receiverName :  event.target.receiverName.value,
+      phoneNumber :  event.target.phoneNumber.value,
+      email :   event.target.email.value,
+      subTeams :  event.target.subTeams.value,
+      region :  event.target.region.value,
+      expDeliverDate:  event.target.expDeliverDate.value,
+
+      street :   event.target.street.value,
+      address2 :   event.target.address2.value,
+      province :   event.target.province.value,
+      city :   event.target.city.value,
+      postcode :   event.target.postcode.value,
+      manifestList: []
+    });
   } catch(err){
     console.log(err)
   }
 }
-
-  // componentDidUpdate() {
-  //   if(this.state.street !== '') {
-  //     this.refs.Modal.show();
-  //   }
-  // }
-
-
-  render() {
     return (
       <>
         <h3>Start a new shipment request</h3>
         <div>
-        <form onSubmit={(e) => this.updateState(e)}>
+        <form onSubmit={(e)=> updateState(e)}>
         <div className="containter">
           {/* 第1行 */}
           <div class="row">
             <div class="col-sm">
               <label htmlFor="receiverName">receiverName:</label>
-              <input type="text" className="form-control"id="receiverName" ref="receiverName"/>
+              <input type="text" className="form-control"id="receiverName"/>
             </div>
             <div class="col-sm">
               <label htmlFor="phoneNumber">phoneNumber:</label>
-              <input type="text" className="form-control"id="phoneNumber" ref="phoneNumber"/>
+              <input type="text" className="form-control"id="phoneNumber"/>
             </div>
           </div>
 
@@ -90,11 +86,11 @@ async updateState(event){
           <div class="row">
             <div class="col-sm">
               <label htmlFor="email">email:</label>
-              <input type="text" className="form-control"id="email" ref="email"/>
+              <input type="text" className="form-control"id="email" />
             </div>
             <div class="col-sm">
               <label htmlFor="subTeams">subTeams:</label>
-              <input type="text" className="form-control"id="subTeams" ref="subTeams"/>
+              <input type="text" className="form-control"id="subTeams" />
             </div>
           </div>
 
@@ -102,7 +98,7 @@ async updateState(event){
           <div class="row">
             <div class="col-sm">
              <label htmlFor="region">region:</label>
-             <select class="form-select" id="region" ref="region">
+             <select class="form-select" id="region" >
                 <option selected>Select your region</option>
                 <option value="west">West</option>
                 <option value="middle">Middle</option>
@@ -111,7 +107,7 @@ async updateState(event){
             </div>
             <div class="col-sm">
               <label htmlFor="expDeliverDate">Expected Deliver Date:</label>
-              <input type="text" className="form-control" id="expDeliverDate" ref="expDeliverDate"/>
+              <input type="text" className="form-control" id="expDeliverDate" />
             </div>
           </div>
           <div class="row"><br></br></div>
@@ -119,32 +115,32 @@ async updateState(event){
           <div class="row">
             <div class="col-sm">
               <label htmlFor="street">Street Address1:</label>
-              <input className="form-control" id="street" type="text" placeholder="Street address" ref="street" />
+              <input className="form-control" id="street" type="text" placeholder="Street address" />
             </div>
             <div class="col-sm">
               <label htmlFor="address2">Address2(Room/APT/Suit):</label>
-              <input className="form-control" id="address2" type="text" placeholder="Address2(Room/APT/Suit)"  ref="address2" />
+              <input className="form-control" id="address2" type="text" placeholder="Address2(Room/APT/Suit)"  />
             </div>
           </div>
           <div class="row">
             <div class="col-sm">
               <label htmlFor="province">Province:</label>
-              <input className="form-control" id="province" type="text" placeholder="State/Province" ref="province" />
+              <input className="form-control" id="province" type="text" placeholder="State/Province" />
             </div>
             <div class="col-sm">
               <label htmlFor="city">City:</label>
-              <input className="form-control" id="city" type="text" placeholder="city" ref="city" />
+              <input className="form-control" id="city" type="text" placeholder="city" />
             </div>
             <div class="col-sm">
               <label htmlFor="postcode">Postcode:</label>
-              <input className="form-control"  id="postcode" type="text" placeholder="Zip/Postcode" ref="postcode" />
+              <input className="form-control"  id="postcode" type="text" placeholder="Zip/Postcode" />
             </div>
           </div>
           
           <div class="row"><br></br></div>{/* Bank line */}
           <div class="row"><p><u>Items manifest:</u></p></div>
           {/* 第五行输入框 */}
-          <RequestPageItemsManifest/>
+          {/* <RequestPageItemsManifest/> */}
         
         </div> {/* Container End */} 
 
@@ -158,6 +154,3 @@ async updateState(event){
 
     );
   }
-}
-
-export default RequestAShipment;
