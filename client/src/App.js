@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";//import bootstrap for display -zack
+import "bootstrap/dist/css/bootstrap.css"; //import bootstrap for display -zack
 
 // We use Route in order to define the different routes of our application
 import { Route, Routes, Link } from "react-router-dom";
@@ -22,7 +22,7 @@ import RequestAShipment from "./components/RequestAShipment";
 import ApproveShipment from "./components/ApproveShipment";
 
 const App = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isLoading } = useAuth0();
 
   return (
     <>
@@ -30,7 +30,7 @@ const App = () => {
         <p>Loading</p>
       ) : (
         <div>
-          <Navbar/>
+          <Navbar />
           <div className="container-fluid">
             <div className="row">
               <SideBarMenu />
@@ -41,14 +41,28 @@ const App = () => {
                     element={<ProtectedRouter protectedComponent={Profile} />}
                   />
                   <Route exact path="/" element={<RecordList />} />
-                  <Route path="/edit/:id" element={<Edit />} />
+                  <Route
+                    path="/edit/:id"
+                    element={<ProtectedRouter protectedComponent={Edit} />}
+                  />
                   <Route path="/record/:id" element={<Details />} />
-                  <Route path="/create" element={<Create />} />
+                  <Route
+                    path="/create"
+                    element={<ProtectedRouter protectedComponent={Create} />}
+                  />
                   <Route path="/search" element={<Search />} />
-                  <Route path="/search/:itemName" element={<SearchRecordList />} />
-                  <Route path="/requestAShipment" element={<RequestAShipment />} />
-                  <Route path="/approveShipment" element={<ApproveShipment />}/>
-
+                  <Route
+                    path="/search/:itemName"
+                    element={<SearchRecordList />}
+                  />
+                  <Route
+                    path="/requestAShipment"
+                    element={<RequestAShipment />}
+                  />
+                  <Route
+                    path="/approveShipment"
+                    element={<ProtectedRouter protectedComponent={ApproveShipment} />}
+                  />
                 </Routes>
               </main>
             </div>
