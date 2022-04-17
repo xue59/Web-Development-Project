@@ -140,7 +140,7 @@ async function updateState(event){
           <div class="row"><br></br></div>{/* Bank line */}
           <div class="row"><p><u>Items manifest:</u></p></div>
           {/* 第五行输入框 */}
-          {/* <RequestPageItemsManifest/> */}
+          {RequestPageItemsManifest()}
         
         </div> {/* Container End */} 
 
