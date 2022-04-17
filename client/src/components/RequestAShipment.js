@@ -20,7 +20,10 @@ class RequestAShipment extends Component {
       address2 : '',
       province : '',
       city : '',
-      postcode : ''
+      postcode : '',
+      
+      manifestList:[]  // 这个为记录所需物品清单table
+
     }
   }
 
@@ -39,7 +42,8 @@ async updateState(event){
       address2 : this.refs.address2.value,
       province : this.refs.province.value,
       city : this.refs.city.value,
-      postcode : this.refs.postcode.value
+      postcode : this.refs.postcode.value,
+      manifestList:[]
     });
     // 需要修改 fetch URL 给后端传参数
     await fetch(`${SERVER_URL}/shipmentRequest/add`, {
@@ -50,7 +54,7 @@ async updateState(event){
       body: JSON.stringify(this.state),
     })
     //navigate("/");
-    this.props.useNavigate("/approveShipment");
+    //this.props.useNavigate("/approveShipment");
   } catch(err){
     console.log(err)
   }
