@@ -1,6 +1,38 @@
 import React from 'react'
 import { useState} from "react";
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+async function getInventory(){
+    try {
+        const response = await fetch(`${SERVER_URL}/record/`);
+        if (!response.ok) {
+            const message = `An error occurred: ${response.statusText}`;
+            window.alert(message);
+            return;
+        }
+        const inventory= await response.json()
+        // console.log(inventory)
+        let [idItemName, idCurrentQuantity] =[{},{}]
+        
+
+        for (let index in inventory){
+            // console.log(inventory[index], typeof(inventory))
+            idItemName[inventory[index]._id] = inventory[index].itemName
+            idCurrentQuantity[inventory[index]._id] = inventory[index].currentQuantity
+        }
+        // console.log(idItemName)
+        // console.log(idCurrentQuantity)
+
+        return([idItemName, idCurrentQuantity])
+
+        
+    } catch(err){
+        console.log(err)
+    }
+
+}
+
 export default function RequestPageItemsManifest() {
   const [newItemList,setNewItemList] = useState([])
   const [displayForm, setDisplayForm] = useState(true);
@@ -9,6 +41,10 @@ export default function RequestPageItemsManifest() {
     currentQuantiry: 0,
     requestAmount: 0
   })
+
+//   const [idItemName, idCurrentQuantity] = await getInventory()
+//   console.log(idItemName, idCurrentQuantity)
+
   const createRow = () => {
     setNewItemList([...newItemList,{...newItem}]);
     setNewItem({
@@ -17,6 +53,7 @@ export default function RequestPageItemsManifest() {
         requestAmount: 0
     });
     setDisplayForm(false)
+
   };
 
   const handleOnChange = e => {
