@@ -130,7 +130,8 @@ const createRow = () => {
 const handleOnChange = e => {
   setNewItem({
     ...newItem,
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    currentQuantiry : dictIdCurrenQuantity[newItem.newitemId]
   });
 };
 
