@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { useAuth0 } from "@auth0/auth0-react";
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Record = (props) => (
@@ -13,16 +14,27 @@ const Record = (props) => (
     <td>{props.record.warehouseLocation}</td>
     <td>{props.record.notes}</td>
     <td>
-     <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-     <button className="btn btn-link"
-       onClick={() => {
-         props.deleteRecord(props.record._id);
-       }}
-     >
-       Delete
-     </button>
-     <Link className="btn btn-link" to={`/record/${props.record._id}`}>View</Link> |
-   </td>
+      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>
+        Edit
+      </Link>{" "}
+      |
+      {props.isAuthenticated && (
+        <>
+          <button
+            className="btn btn-link"
+            onClick={() => {
+              props.deleteRecord(props.record._id);
+            }}
+          >
+            Delete
+          </button>
+          |
+        </>
+      )}
+      <Link className="btn btn-link" to={`/record/${props.record._id}`}>
+        View
+      </Link>
+    </td>
   </tr>
 );
 
@@ -30,6 +42,7 @@ export default function RecordList() {
   const [records, setRecords] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth0();
 
   // This method fetches the records from the database.
   useEffect(() => {
@@ -46,13 +59,10 @@ export default function RecordList() {
 
       if (records.length === 0) {
         window.alert("No Inventory match your search!");
-        navigate("/search")
+        navigate("/search");
       } else {
-
         setRecords(records);
-
       }
-
     }
 
     getRecords();
@@ -78,6 +88,7 @@ export default function RecordList() {
           record={record}
           deleteRecord={() => deleteRecord(record._id)}
           key={record._id}
+          isAuthenticated={isAuthenticated}
         />
       );
     });

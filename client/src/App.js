@@ -29,49 +29,51 @@ const App = () => {
       {/* {isLoading ? (
         <p>Loading</p>
       ) : ( */}
-        <div>
-          <Navbar />
-          <div className="container-fluid">
-            <div className="row">
-              <SideBarMenu />
-              <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <Routes>
-                  <Route
-                    path="/profile"
-                    element={<ProtectedRouter protectedComponent={Profile} />}
-                  />
-                  <Route exact path="/" element={<RecordList />} />
-                  <Route
-                    path="/edit/:id"
-                    element={<ProtectedRouter protectedComponent={Edit} />}
-                  />
-                  <Route path="/record/:id" element={<Details />} />
-                  <Route
-                    path="/create"
-                    element={<ProtectedRouter protectedComponent={Create} />}
-                  />
-                  <Route path="/search" element={<Search />} />
-                  <Route
-                    path="/search/:itemName"
-                    element={<SearchRecordList />}
-                  />
-                  <Route
-                    path="/requestAShipment"
-                    element={<RequestAShipment />}
-                  />
-                  <Route
-                    path="/approveShipment"
-                    element={<ProtectedRouter protectedComponent={ApproveShipment} />}
-                  />
-                  <Route
-                    path="/shipmentDetails/:id"
-                    element={<ShipmentDetails/>}
-                  />
-                </Routes>
-              </main>
-            </div>
+      <div>
+        <Navbar />
+        <div className="container-fluid">
+          <div className="row">
+            <SideBarMenu />
+            <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <Routes>
+                <Route
+                  path="/profile"
+                  element={<ProtectedRouter protectedComponent={Profile} />}
+                />
+                <Route exact path="/" element={<RecordList />} />
+                <Route
+                  path="/edit/:id"
+                  element={<ProtectedRouter protectedComponent={Edit} />}
+                />
+                <Route path="/record/:id" element={<Details />} />
+                <Route
+                  path="/create"
+                  element={<ProtectedRouter protectedComponent={Create} />}
+                />
+                <Route path="/search" element={<Search />} />
+                <Route
+                  path="/search/:itemName"
+                  element={<SearchRecordList />}
+                />
+                <Route
+                  path="/requestAShipment"
+                  element={<RequestAShipment />}
+                />
+                <Route
+                  path="/approveShipment"
+                  element={
+                    <ProtectedRouter protectedComponent={ApproveShipment} />
+                  }
+                />
+                <Route
+                  path="/shipmentDetails/:id"
+                  element={<ShipmentDetails />}
+                />
+              </Routes>
+            </main>
           </div>
         </div>
+      </div>
       {/* )} */}
     </>
   );
