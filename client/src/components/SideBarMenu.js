@@ -3,8 +3,10 @@ import "bootstrap/dist/css/bootstrap.css";
 //import { NavLink, Link} from "react-router-dom";
 import Create from "./create";
 import "../stylesheet/SideBarMenu.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function SideBarMenu() {
+  const { isAuthenticated } = useAuth0();
   return (
     <>
       <nav
@@ -14,7 +16,7 @@ export default function SideBarMenu() {
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">
+              <a class="nav-link active" aria-current="page" href=" ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -32,7 +34,7 @@ export default function SideBarMenu() {
                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
                 Show Inventory
-              </a>
+              </a >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/create">
@@ -53,7 +55,7 @@ export default function SideBarMenu() {
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
                 Create Record
-              </a>
+              </a >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/search">
@@ -73,56 +75,63 @@ export default function SideBarMenu() {
                   <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
                 </svg>
                 Search Record
-              </a>
+              </a >
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/requestAShipment">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-shopping-cart"
-                  aria-hidden="true"
-                >
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                Request a shipment
-              </a>
-            </li>
-
-            <li>
-              <hr></hr>
-            </li>
-            {/* If logined, it will show teh approvel feature to the user */}
-            <div>
+            {isAuthenticated ? (
               <li class="nav-item">
-                <a class="nav-link" href="/approveShipment">
+                <a class="nav-link" href="/requestAShipment">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fill="green"
-                    class="bi bi-check-circle"
-                    viewBox="0 0 16 16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-shopping-cart"
+                    aria-hidden="true"
                   >
-                    {" "}
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                   </svg>
-                  View Request History
-                </a>
+                  Request a shipment
+                </a >
               </li>
+            ) : (
+              <></>
+            )}
+            <li>
               <hr></hr>
-            </div>
+            </li>
+            {/* If logined, it will show teh approvel feature to the user */}
+            {isAuthenticated ? (
+              <div>
+                <li class="nav-item">
+                  <a class="nav-link" href="/approveShipment">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="green"
+                      class="bi bi-check-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      {" "}
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                    View Request History
+                  </a >
+                </li>
+                <hr></hr>
+              </div>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </nav>
