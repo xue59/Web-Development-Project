@@ -6,6 +6,8 @@ export default function LoginButton() {
 
   return (
     <button
+      type="button"
+      className="btn btn-primary"
       onClick={() => {
         loginWithRedirect();
         // { screen_hint: "signup" }

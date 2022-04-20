@@ -1,5 +1,7 @@
 const express = require("express");
 
+
+
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
@@ -86,9 +88,9 @@ recordRoutes.route("/record/add").post(function (req, response) {
 });
 
 // add shipping
-recordRoutes.route("/shipmentRequest/add").post(function (req, response) {
-  let db_connect = dbo.getDb();
-  let myobj = {
+recordRoutes.route("/shipmentRequest/add").post(async function (req, response) {
+
+  let myobj1 = {
     receiverName: req.body.receiverName,
     phoneNumber: req.body.phoneNumber,
     email: req.body.email,
@@ -100,11 +102,34 @@ recordRoutes.route("/shipmentRequest/add").post(function (req, response) {
     province: req.body.province,
     city: req.body.city,
     postcode: req.body.postcode,
+    manifestList: req.body.manifestList,
   };
-  db_connect.collection("shippings").insertOne(myobj, function (err, res) {
-    if (err) throw err;
-    response.json(res);
-  });
+
+  await dbo.getDb().collection("shippings").insertOne(myobj1);
+
+
+
+//////////////////// 改shipping ////////////////////
+
+
+  try {
+    for (let i = 0; i < req.body.manifestList.length; i++) {
+
+      let myquery = { _id: ObjectId(req.body.manifestList[i].newitemId) };
+      let newvalues = {
+        $set: {
+          currentQuantity: req.body.manifestList[i].currentQuantiry - req.body.manifestList[i].requestAmount,
+        },
+      };
+
+      await dbo.getDb()
+      .collection("records")
+      .updateOne(myquery, newvalues);
+    }
+
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // This section will help you update a record by id.

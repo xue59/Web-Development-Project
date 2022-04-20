@@ -99,13 +99,14 @@ export default function Profile() {
         </p>
       )}
 
-      <button
+      <input
+        className="btn btn-primary"
+        value={isUpdating ? "Submit" : "Update"}
         onClick={() => {
           handleClickButton();
         }}
       >
-        {isUpdating ? "Submit" : "Update"}
-      </button>
+      </input>
     </div>
   );
 }
