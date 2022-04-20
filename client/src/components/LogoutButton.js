@@ -5,11 +5,13 @@ export default function LogoutButton() {
   const { logout } = useAuth0();
 
   return (
-    <input
+    <button
+      type="button"
       className="btn btn-primary"
-      value="Logout"
       onClick={() => logout({ returnTo: window.location.origin })}
       // { screen_hint: "signup" }
-    />
+    >
+      Logout
+    </button>
   );
 }

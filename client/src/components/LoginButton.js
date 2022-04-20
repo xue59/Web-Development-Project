@@ -5,13 +5,15 @@ export default function LoginButton() {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <input
+    <button
+      type="button"
       className="btn btn-primary"
-      value="Login"
       onClick={() => {
         loginWithRedirect();
         // { screen_hint: "signup" }
       }}
-    />
+    >
+      Login
+    </button>
   );
 }
