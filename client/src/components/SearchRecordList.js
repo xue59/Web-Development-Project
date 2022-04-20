@@ -105,7 +105,7 @@ export default function RecordList() {
         <thead>
           <tr className="inventory-table-head">
             <th>Item Name:</th>
-            <th>Img:</th>
+            <th>Type:</th>
             <th>Current Quantity:</th>
             <th>Sub-teams:</th>
             <th>Region:</th>

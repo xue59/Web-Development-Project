@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <div>
       <header className="navbar navbar-light bg-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-      <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">A shipment portal</a>
+      <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">NEU shipment</a>
       <div className="temp-creat-record">
       </div>
       <div className="navbar-nav">

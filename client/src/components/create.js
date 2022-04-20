@@ -66,7 +66,7 @@ export default function Create() {
          />
        </div>
        <div className="form-group">
-         <label htmlFor="img">imgs:</label>
+         <label htmlFor="img">types:</label>
          <input
            type="text"
            className="form-control"

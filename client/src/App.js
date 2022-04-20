@@ -57,7 +57,7 @@ const App = () => {
                 />
                 <Route
                   path="/requestAShipment"
-                  element={<RequestAShipment />}
+                  element={<ProtectedRouter protectedComponent={RequestAShipment} />}
                 />
                 <Route
                   path="/approveShipment"
