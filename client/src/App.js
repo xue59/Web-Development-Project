@@ -21,6 +21,7 @@ import SearchRecordList from "./components/SearchRecordList";
 import RequestAShipment from "./components/RequestAShipment";
 import ApproveShipment from "./components/ApproveShipment";
 import ShipmentDetails from "./components/ShipmentDetails";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -71,6 +72,7 @@ const App = () => {
                   element={<ShipmentDetails />}
                 />
               </Routes>
+              <Footer />
             </main>
           </div>
         </div>
