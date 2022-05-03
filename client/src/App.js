@@ -22,6 +22,7 @@ import RequestAShipment from "./components/RequestAShipment";
 import ApproveShipment from "./components/ApproveShipment";
 import ShipmentDetails from "./components/ShipmentDetails";
 import Footer from "./components/Footer";
+import Homepage from "./components/Homepage";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -41,7 +42,8 @@ const App = () => {
                   path="/profile"
                   element={<ProtectedRouter protectedComponent={Profile} />}
                 />
-                <Route exact path="/" element={<RecordList />} />
+                <Route exact path="/record" element={<RecordList />} />
+                <Route exact path="/home" element={<Homepage />} />
                 <Route
                   path="/edit/:id"
                   element={<ProtectedRouter protectedComponent={Edit} />}

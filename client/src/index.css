@@ -12,3 +12,6 @@ code {
     monospace;
 }
 
+.list-group-item {
+  padding: 0.1rem 0rem
+}

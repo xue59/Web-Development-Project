@@ -7,8 +7,9 @@ export default function LogoutButton() {
   return (
     <button
       type="button"
-      className="btn btn-primary"
-      onClick={() => logout({ returnTo: window.location.origin })}
+      className="btn btn-danger"
+      color="red"
+      onClick={() => logout({ returnTo: window.location.assign('http://localhost:3000/home') })}
       // { screen_hint: "signup" }
     >
       Logout

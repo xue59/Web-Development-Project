@@ -13,8 +13,8 @@ export default function Footer() {
           <img
             src="email.ico"
             alt="neu email"
-            width="20"
-            height="20"
+            width="45"
+            height="45"
           />
         </a>
         <a
@@ -24,16 +24,16 @@ export default function Footer() {
           <img
             src="github.ico"
             alt="github"
-            width="20"
-            height="20"
+            width="40"
+            height="40"
           />
         </a>
         <a href="https://www.linkedin.com/" target="_blank">
           <img
             src="linkedin.ico"
             alt="linkedin"
-            width="20"
-            height="20"
+            width="40"
+            height="40"
           />
         </a>
       </p>
