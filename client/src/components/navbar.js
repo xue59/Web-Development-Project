@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="navbar-nav">
           <div className="nav-item">
             <Link to="/profile">
-              <button class="btn btn-success"><i class="fa fa-address-card-o" ></i> | Profile</button>
+              <button className="btn btn-success"><i className="fa fa-address-card-o" ></i> | Profile</button>
             </Link>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </div>
