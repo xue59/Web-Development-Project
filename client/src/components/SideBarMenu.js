@@ -11,12 +11,12 @@ export default function SideBarMenu() {
     <>
       <nav
         id="sidebarMenu"
-        class="col-md-3 col-lg-2 d-md-block bg-light sidebar"
+        className="col-md-3 col-lg-2 d-md-block bg-light sidebar"
       >
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-          <li class="list-group-item list-group-item-action list-group-item-light" >
-              <a class="nav-link active" aria-current="page" href="/home">
+        <div className="position-sticky pt-3">
+          <ul className="nav flex-column">
+          <li className="list-group-item list-group-item-action list-group-item-light" >
+              <a className="nav-link active" aria-current="page" href="/home">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -24,10 +24,10 @@ export default function SideBarMenu() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-home"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-home"
                   aria-hidden="true"
                 >
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -36,14 +36,14 @@ export default function SideBarMenu() {
                 Home
               </a >
             </li>
-            <li class="list-group-item list-group-item-action list-group-item-light" >
-              <a class="nav-link active" aria-current="page" href="/record">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/></svg>
+            <li className="list-group-item list-group-item-action list-group-item-light" >
+              <a className="nav-link active" aria-current="page" href="/record">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-table" viewBox="0 0 16 16"><path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/></svg>
                 Show Inventory
               </a >
             </li>
-            <li class="list-group-item list-group-item-action list-group-item-light">
-              <a class="nav-link" href="/create">
+            <li className="list-group-item list-group-item-action list-group-item-light">
+              <a className="nav-link" href="/create">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -51,10 +51,10 @@ export default function SideBarMenu() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-file"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-file"
                   aria-hidden="true"
                 >
                   <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
@@ -63,8 +63,8 @@ export default function SideBarMenu() {
                 Create Items
               </a >
             </li>
-            <li class="list-group-item list-group-item-action list-group-item-light">
-              <a class="nav-link" href="/search">
+            <li className="list-group-item list-group-item-action list-group-item-light">
+              <a className="nav-link" href="/search">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -72,10 +72,10 @@ export default function SideBarMenu() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-activity"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-activity"
                 >
                   <circle cx="10.5" cy="10.5" r="7.5"></circle>
                   <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
@@ -90,8 +90,8 @@ export default function SideBarMenu() {
             {/* If logined, it will show teh approvel feature to the user */}
             {isAuthenticated ? (
               <div>
-                <li class="list-group-item list-group-item-action list-group-item-light">
-                  <a class="nav-link" href="/requestAShipment">
+                <li className="list-group-item list-group-item-action list-group-item-light">
+                  <a className="nav-link" href="/requestAShipment">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -99,10 +99,10 @@ export default function SideBarMenu() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-shopping-cart"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-shopping-cart"
                       aria-hidden="true"
                     >
                       <circle cx="9" cy="21" r="1"></circle>
@@ -112,14 +112,14 @@ export default function SideBarMenu() {
                     Request Shipment
                   </a >
                 </li>
-                <li class="list-group-item list-group-item-action list-group-item-light">
-                  <a class="nav-link" href="/approveShipment">
+                <li className="list-group-item list-group-item-action list-group-item-light">
+                  <a className="nav-link" href="/approveShipment">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       fill="green"
-                      class="bi bi-check-circle"
+                      className="bi bi-check-circle"
                       viewBox="0 0 16 16"
                     >
                       {" "}
