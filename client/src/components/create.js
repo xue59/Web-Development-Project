@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate} from "react-router";
+
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
  
 export default function Create() {
@@ -24,7 +25,6 @@ export default function Create() {
  // This function will handle the submission.
  async function onSubmit(e) {
    e.preventDefault();
- 
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newItem = { ...form };
    await fetch(`${SERVER_URL}/record/add`, {
@@ -47,7 +47,8 @@ export default function Create() {
     warehouseLocation:"",
     notes: ""
    });
-   navigate("/");
+   navigate("/record");
+  
  }
  
  // This following section will display the form that takes the input from the user.

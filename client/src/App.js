@@ -44,6 +44,7 @@ const App = () => {
                 />
                 <Route exact path="/record" element={<RecordList />} />
                 <Route exact path="/home" element={<Homepage />} />
+                <Route exact path="/" element={<Homepage />} />
                 <Route
                   path="/edit/:id"
                   element={<ProtectedRouter protectedComponent={Edit} />}

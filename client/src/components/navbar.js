@@ -19,7 +19,7 @@ export default function Navbar() {
     <div>
       <header className="navbar navbar-light bg-light sticky-top bg-light flex-md-nowrap p-0 shadow">
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/home">
-          <img src="T3Logo.png" height={45}></img>
+          <img src="T3Logo.png" height={45} alt="T3 inventory logo"></img>
         </a>
 
         <div className="temp-creat-record"></div>

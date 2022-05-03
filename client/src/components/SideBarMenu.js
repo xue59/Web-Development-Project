@@ -43,27 +43,6 @@ export default function SideBarMenu() {
               </a >
             </li>
             <li className="list-group-item list-group-item-action list-group-item-light">
-              <a className="nav-link" href="/create">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="feather feather-file"
-                  aria-hidden="true"
-                >
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                  <polyline points="13 2 13 9 20 9"></polyline>
-                </svg>
-                Create Items
-              </a >
-            </li>
-            <li className="list-group-item list-group-item-action list-group-item-light">
               <a className="nav-link" href="/search">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,6 +69,27 @@ export default function SideBarMenu() {
             {/* If logined, it will show teh approvel feature to the user */}
             {isAuthenticated ? (
               <div>
+                <li className="list-group-item list-group-item-action list-group-item-light">
+                  <a className="nav-link" href="/create">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-file"
+                      aria-hidden="true"
+                    >
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                      <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    Create Items
+                  </a >
+                </li>
                 <li className="list-group-item list-group-item-action list-group-item-light">
                   <a className="nav-link" href="/requestAShipment">
                     <svg
@@ -132,7 +132,33 @@ export default function SideBarMenu() {
                 <hr></hr>
               </div>
             ) : (
-              <></>
+              <div>
+                <li className="list-group-item list-group-item-light">
+                  <div className="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="grey" className="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                    </svg>
+                    Create Items
+                  </div >
+                </li>
+                <li className="list-group-item list-group-item-light">
+                  <div className="nav-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="grey" className="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                    </svg>
+                    Request Shipment
+                  </div >
+                </li>
+                <li className="list-group-item list-group-item-light">
+                  <div className="nav-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="grey" className="bi bi-lock-fill" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                    </svg>
+                    View Records
+                  </div >
+                </li>
+                <hr></hr>
+              </div>
             )}
           </ul>
         </div>
