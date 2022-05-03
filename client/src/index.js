@@ -1,15 +1,34 @@
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import App from "./App";
+// import { BrowserRouter } from "react-router-dom";
+// import Auth0ProviderWithHistory from "./components/Auth0ProviderWithHistory";
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// root.render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <Auth0ProviderWithHistory>
+//         <App />
+//       </Auth0ProviderWithHistory>
+//     </BrowserRouter>
+//   </React.StrictMode> 
+// )
+
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Auth0ProviderWithHistory from "./components/Auth0ProviderWithHistory";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(
-  <BrowserRouter>
-    <Auth0ProviderWithHistory>
-      <App />
-    </Auth0ProviderWithHistory>
-  </BrowserRouter>
-)
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
