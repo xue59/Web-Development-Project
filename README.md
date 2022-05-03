@@ -5,7 +5,11 @@
 The use case of our project is in a mid-size company that has warehouse and needs a system for inventory management. Assuming the company has multiple warehouses in different locations. Each warehouse has its own inventory. There are three basic roles in the company: the manager, the requester, and the guest(unregistered). The manager has the ability to perform CRUD operations for the inventory of the warehouses, on the other hand, the requester can raise CRUD request to the manager, which need to be approved by the manager in order to actually perform the request. The guest(unregistered) can only read the inventory list from the warehouse. The project would use the MERN stack. The complexity of this project is medium, which requires around 3 to 4 weeks of work by a team of 3 members. 
 
 
-## Updates for Iteration 1 and Iteration 2 and Iteration 3: 
+## Updates for Iteration 1 and Iteration 2 and Iteration 3 and Final Deliver: 
+
+## Final Project Deliverables:
+1. Production APP and try it yourself (https://t3-inventory-app.herokuapp.com/home) 
+2. Watch Demo Video Here(https://youtu.be/DSqmYq-80TE)
 
 ### Our team have built the skeletons for the 5 pages listed below. 
 1. Homepage
