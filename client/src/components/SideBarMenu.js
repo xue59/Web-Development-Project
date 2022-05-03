@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 //import { NavLink, Link} from "react-router-dom";
-import Create from "./create";
 import "../stylesheet/SideBarMenu.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -66,9 +65,10 @@ export default function SideBarMenu() {
             <li>
               <hr></hr>
             </li>
+
             {/* If logined, it will show teh approvel feature to the user */}
             {isAuthenticated ? (
-              <div>
+              <>
                 <li className="list-group-item list-group-item-action list-group-item-light">
                   <a className="nav-link" href="/create">
                     <svg
@@ -129,10 +129,12 @@ export default function SideBarMenu() {
                     View Records
                   </a >
                 </li>
+              <li>
                 <hr></hr>
-              </div>
+              </li>
+              </>
             ) : (
-              <div>
+              <>
                 <li className="list-group-item list-group-item-light">
                   <div className="nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="grey" className="bi bi-lock-fill" viewBox="0 0 16 16">
@@ -157,8 +159,10 @@ export default function SideBarMenu() {
                     View Records
                   </div >
                 </li>
-                <hr></hr>
-              </div>
+                <li>
+                  <hr></hr>
+                </li>
+              </>
             )}
           </ul>
         </div>

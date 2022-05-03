@@ -1,5 +1,3 @@
-import React from "react";
-import Select from 'react-select';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 async function getInventory(){
