@@ -21,6 +21,7 @@ export default function Navbar() {
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">
           NEU shipment
         </a>
+
         <div className="temp-creat-record"></div>
         <div className="navbar-nav">
           <div className="nav-item">
