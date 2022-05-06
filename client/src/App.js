@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";//import bootstrap for display -zack
+import "bootstrap/dist/css/bootstrap.css"; //import bootstrap for display -zack
 
 // We use Route in order to define the different routes of our application
 import { Route, Routes, Link } from "react-router-dom";
@@ -20,36 +20,67 @@ import Details from "./components/Details";
 import SearchRecordList from "./components/SearchRecordList";
 import RequestAShipment from "./components/RequestAShipment";
 import ApproveShipment from "./components/ApproveShipment";
+import ShipmentDetails from "./components/ShipmentDetails";
+import Footer from "./components/Footer";
+import Homepage from "./components/Homepage";
 
 const App = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
-
+  const { isLoading } = useAuth0();
   return (
     <>
-        <div>
-          <Navbar/>
-          <div className="container-fluid">
-            <div className="row">
-              <SideBarMenu />
-              <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <Routes>
-                  <Route
-                    path="/profile"
-                    element={<ProtectedRouter protectedComponent={Profile} />}
-                  />
-                  <Route exact path="/" element={<RecordList />} />
-                  <Route path="/edit/:id" element={<Edit />} />
-                  <Route path="/record/:id" element={<Details />} />
-                  <Route path="/create" element={<Create />} />
-                  <Route path="/search" element={<Search />} />
-                  <Route path="/search/:itemName" element={<SearchRecordList />} />
-                  <Route path="/requestAShipment" element={<RequestAShipment />} />
-                  <Route path="/approveShipment" element={<ApproveShipment />}/>
-                </Routes>
-              </main>
-            </div>
+      {/* {isLoading ? (
+        <p>Loading</p>
+      ) : ( */}
+      <div>
+        <Navbar />
+        <div className="container-fluid">
+          <div className="row">
+            <SideBarMenu />
+            <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <Routes>
+                <Route
+                  path="/profile"
+                  element={<ProtectedRouter protectedComponent={Profile} />}
+                />
+                <Route exact path="/record" element={<RecordList />} />
+                <Route exact path="/home" element={<Homepage />} />
+                <Route exact path="/" element={<Homepage />} />
+                <Route
+                  path="/edit/:id"
+                  element={<ProtectedRouter protectedComponent={Edit} />}
+                />
+                <Route path="/record/:id" element={<Details />} />
+                <Route
+                  path="/create"
+                  element={<ProtectedRouter protectedComponent={Create} />}
+                />
+                <Route path="/search" element={<Search />} />
+                <Route
+                  path="/search/:itemName"
+                  element={<SearchRecordList />}
+                />
+                <Route
+                  path="/requestAShipment"
+                  element={<RequestAShipment />}
+                  // element={<ProtectedRouter protectedComponent={RequestAShipment} />}
+                />
+                <Route
+                  path="/approveShipment"
+                  element={
+                    <ProtectedRouter protectedComponent={ApproveShipment} />
+                  }
+                />
+                <Route
+                  path="/shipmentDetails/:id"
+                  element={<ShipmentDetails />}
+                />
+              </Routes>
+              <Footer />
+            </main>
           </div>
         </div>
+      </div>
+      {/* )} */}
     </>
   );
 };
